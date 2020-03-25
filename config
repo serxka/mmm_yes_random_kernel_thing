@@ -1,0 +1,15 @@
+#! /bin/sh
+PROJECTS="libc kernel"
+
+export KERNEL_BIN=kernel.elf
+
+export AR=i686-elf-ar
+export AS=i686-elf-as
+export LD=i686-elf-ld
+export CC=i686-elf-gcc
+
+export CFLAGS="-g -O0"
+export CPPFLAGS=""
+
+export SYSROOT="$(pwd)/sysroot"
+export CC="$CC --sysroot=$SYSROOT"

@@ -1,0 +1,4 @@
+#! /bin/sh
+alias q='./qemu'
+alias b='./build'
+alias c='./clean'

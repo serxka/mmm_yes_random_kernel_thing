@@ -1,0 +1,5 @@
+#! /bin/sh
+set -e
+. ./config
+
+qemu-system-x86_64 -kernel $SYSROOT/boot/$KERNEL_BIN
