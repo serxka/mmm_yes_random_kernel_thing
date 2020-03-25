@@ -5,7 +5,8 @@ boot.S.o \
 vga.c.o \
 dts.c.o \
 interrupt.S.o \
-interrupt.c.o 
+interrupt.c.o \
+pic.c.o
 
 CFLAGS?=-g -O0
 CPPFLAGS?=

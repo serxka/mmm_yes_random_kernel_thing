@@ -1,5 +1,5 @@
 #include "dts.h"
-#include "io.h"
+#include "pic.h"
 #include <string.h>
 
 struct dt_ptr
@@ -37,18 +37,8 @@ static void set_idt(void)
 	ptr.base = (uint32_t)&idt_entries;
 
 	memset(idt_entries, 0, sizeof(idt_entry_t) * 255);
-
-	// remap the pic
-	outb(0x20, 0x11);
-	outb(0xA0, 0x11);
-	outb(0x21, 0x20);
-	outb(0xA1, 0x28);
-	outb(0x21, 0x04);
-	outb(0xA1, 0x02);
-	outb(0x21, 0x01);
-	outb(0xA1, 0x01);
-	outb(0x21, 0x0);
-	outb(0xA1, 0x0);
+	
+	pic_init();
 
 	idt_set_entry(8, (uint32_t)isr8, 0x08, 0x8E);
 	idt_set_entry(32, (uint32_t)isr32, 0x08, 0x8E);
