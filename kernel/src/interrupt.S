@@ -11,4 +11,5 @@
 .section .text
 ISR 8
 ISR 32
+ISR 33
 ISR 128

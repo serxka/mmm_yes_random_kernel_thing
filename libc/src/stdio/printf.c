@@ -69,6 +69,7 @@ int printf(const char* __restrict format, ...)
 				break; }
 		}
 	}
+	tty_updatecursor();
 
 	va_end(args);
 	return written;

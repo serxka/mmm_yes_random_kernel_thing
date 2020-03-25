@@ -101,14 +101,31 @@ void tty_put(const char c)
 			vga_column = 0;
 			break;
 
+		case '\b':
+			vga_putat(vga_entry(' ', vga_color), vga_column, vga_row);
+			if (vga_column == 0)
+			{
+				vga_column = VGA_WIDTH-1;
+				if (vga_row != 0)
+					--vga_row;
+			} else
+				--vga_column;
+			break;
+			
 		default:
 			vga_putat(vga_entry(c, vga_color), vga_column, vga_row);
-			vga_column = (vga_column+1) % VGA_WIDTH;
-			if (vga_row+1 == VGA_HEIGHT)
-				{ vga_scroll(); ++vga_row; }
+			if (++vga_column == VGA_WIDTH)
+			{
+				vga_column = 0;
+				if (++vga_row == VGA_HEIGHT)
+					vga_scroll();
+			}
 			break;
 	}
 }
+
+void tty_updatecursor(void)
+{ vga_setcursor(vga_column, vga_row); }
 
 void tty_write(const char *str, const int length)
 {

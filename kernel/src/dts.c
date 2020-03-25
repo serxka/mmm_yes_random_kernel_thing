@@ -37,12 +37,14 @@ static void set_idt(void)
 	ptr.base = (uint32_t)&idt_entries;
 
 	memset(idt_entries, 0, sizeof(idt_entry_t) * 255);
-	
-	pic_init();
 
 	idt_set_entry(8, (uint32_t)isr8, 0x08, 0x8E);
 	idt_set_entry(32, (uint32_t)isr32, 0x08, 0x8E);
+	idt_set_entry(33, (uint32_t)isr33, 0x08, 0x8E);
 	idt_set_entry(128, (uint32_t)isr128, 0x08, 0x8E);
+
+	pic_init();
+	pic_clearmask(1);
 
 	asm volatile ("lidt %0" : : "m"(ptr));
 	asm volatile ("sti");

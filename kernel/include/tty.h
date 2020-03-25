@@ -3,6 +3,7 @@
 
 void tty_init(void);
 void tty_put(const char c);
+void tty_updatecursor(void);
 void tty_write(const char *str, const int length);
 void tty_writestring(const char *str);
 

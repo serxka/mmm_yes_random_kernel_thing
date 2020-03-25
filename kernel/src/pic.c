@@ -37,12 +37,12 @@ static void pit_init(void)
 
 void isr32_handler(void)
 {
+	pic_eoi;
 	for (int i = 0; i < 10; ++i)
 	{
 		if (timers[i].timeleft > 0 && --timers[i].timeleft == 0)
 			timers[i].complete = 1;
 	}
-	pic_eoi;
 }
 
 int32_t ksleep (uint32_t ms)
