@@ -4,7 +4,8 @@ stdio/printf.c.o \
 stdio/putchar.c.o \
 stdio/puts.c.o \
 stdlib/itoa.c.o \
-string/strlen.o \
+string/strlen.c.o \
+string/memset.c.o \
 
 CFLAGS?=-g -O0
 CPPFLAGS?=

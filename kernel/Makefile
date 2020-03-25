@@ -2,7 +2,10 @@ KERNEL_BIN?=kernel.elf
 OBJS=\
 kmain.c.o \
 boot.S.o \
-vga.c.o
+vga.c.o \
+dts.c.o \
+interrupt.S.o \
+interrupt.c.o 
 
 CFLAGS?=-g -O0
 CPPFLAGS?=
